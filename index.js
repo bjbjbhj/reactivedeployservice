@@ -1,12 +1,22 @@
-function buildTree(inorder, postorder) {
-  if (!inorder.length || !postorder.length) return null;
-  const rootVal = postorder[postorder.length - 1];
-  const root = new TreeNode(rootVal);
-  const mid = inorder.indexOf(rootVal);
-  root.left = buildTree(inorder.slice(0, mid), postorder.slice(0, mid));
-  root.right = buildTree(
-    inorder.slice(mid + 1),
-    postorder.slice(mid, postorder.length - 1),
-  );
-  return root;
+function shuffle(array) {
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there are elements remaining
+  while (currentIndex !== 0) {
+    // Pick a remaining element
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // Swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
 }
+
+const shuffledDeck = shuffle([1, 2, 3, 4, 5]);
+console.log(shuffledDeck);
