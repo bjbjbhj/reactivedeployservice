@@ -1,22 +1,12 @@
-function shuffle(array) {
-  let currentIndex = array.length,
-    randomIndex;
-
-  // While there are elements remaining
-  while (currentIndex !== 0) {
-    // Pick a remaining element
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // Swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
+function bubbleSort(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        let temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
   }
-
-  return array;
+  return arr;
 }
-
-const shuffledDeck = shuffle([1, 2, 3, 4, 5]);
-console.log(shuffledDeck);
